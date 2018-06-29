@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+        textarea::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+            opacity: 0;
+            background: #D8D8D8;
+            border-radius: 5px;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+
+        textarea::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+
+        /*定义滑块 内阴影+圆角*/
+
+        textarea::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #d8d8d8;
+            z-index: 0
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 170px;
+            padding: 15px 35px;
+            outline: 0;
+            font-size: 16px;
+            word-wrap: break-word;
+            overflow-x: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
+            line-height: 1.5;
+            color: #3D4059;
+            border: none;
+            resize: none;
+            border: 1px solid #DDDDDD;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        textarea:focus {
+            border: 1px solid #5BBEFF;
+            box-shadow: 0 0 8px 0 rgba(1, 154, 255, 0.28);
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+</body>
+
+</html>

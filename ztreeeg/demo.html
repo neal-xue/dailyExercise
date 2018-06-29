@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css">
+</head>
+<body>
+    <ul id="treeDemo" class="ztree"></ul>
+    <script src="https://assets.zhihuishu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/jquery.ztree.core.min.js"></script>
+    <script src="js/jquery.ztree.exedit.min.js"></script>
+    <script> 
+    var zTreeObj;
+    // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+    var setting = {
+        edit: {
+            drag: {
+                autoExpandTrigger: true,
+                prev: dropPrev,
+                inner: dropInner,
+                next: dropNext
+            },
+            enable: true,
+            showRemoveBtn: false,
+            showRenameBtn: false
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            beforeDrag: beforeDrag,
+            beforeDrop: beforeDrop,
+            beforeDragOpen: beforeDragOpen,
+            onDrag: onDrag,
+            onDrop: onDrop,
+            onExpand: onExpand
+        }
+    };
+
+    // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+    var zNodes =[
+        { id:1, pId:0, name:"字体设计及背景介绍", open:true},
+        { id:11, pId:1, name:"西文排版原则及文字排版背景设计.mov"},
+        { id:12, pId:1, name:"第1章 西文字体介绍",open:true},
+        { id:121, pId:12, name:"字母的形成.ppt"},
+        { id:122, pId:12, name:"西文排版原则.pdf"},
+        { id:123, pId:12, name:"hi课的主要功能点.docx"},
+        { id:13, pId:1, name:"第2章 文字排版", open:true},
+        { id:131, pId:13, name:"hi课堂.ppt"},
+        { id:132, pId:13, name:"hi课是什么.txt"},
+        { id:132, pId:13, name:"架构图"}
+        
+    ];
+    function dropPrev(treeId, nodes, targetNode) {
+        var pNode = targetNode.getParentNode();
+        if (pNode && pNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                var curPNode = curDragNodes[i].getParentNode();
+                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function dropInner(treeId, nodes, targetNode) {
+        if (targetNode && targetNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                if (!targetNode && curDragNodes[i].dropRoot === false) {
+                    return false;
+                } else if (curDragNodes[i].parentTId && curDragNodes[i].getParentNode() !== targetNode && curDragNodes[i].getParentNode().childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function dropNext(treeId, nodes, targetNode) {
+        var pNode = targetNode.getParentNode();
+        if (pNode && pNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                var curPNode = curDragNodes[i].getParentNode();
+                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    var log, className = "dark", curDragNodes, autoExpandNode;
+    function beforeDrag(treeId, treeNodes) {
+        className = (className === "dark" ? "":"dark");
+        showLog("[ "+getTime()+" beforeDrag ]&nbsp;&nbsp;&nbsp;&nbsp; drag: " + treeNodes.length + " nodes." );
+        for (var i=0,l=treeNodes.length; i<l; i++) {
+            if (treeNodes[i].drag === false) {
+                curDragNodes = null;
+                return false;
+            } else if (treeNodes[i].parentTId && treeNodes[i].getParentNode().childDrag === false) {
+                curDragNodes = null;
+                return false;
+            }
+        }
+        curDragNodes = treeNodes;
+        return true;
+    }
+    function beforeDragOpen(treeId, treeNode) {
+        autoExpandNode = treeNode;
+        return true;
+    }
+    function beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy) {
+        className = (className === "dark" ? "":"dark");
+        showLog("[ "+getTime()+" beforeDrop ]&nbsp;&nbsp;&nbsp;&nbsp; moveType:" + moveType);
+        showLog("target: " + (targetNode ? targetNode.name : "root") + "  -- is "+ (isCopy==null? "cancel" : isCopy ? "copy" : "move"));
+        return true;
+    }
+    function onDrag(event, treeId, treeNodes) {
+        className = (className === "dark" ? "":"dark");
+        showLog("[ "+getTime()+" onDrag ]&nbsp;&nbsp;&nbsp;&nbsp; drag: " + treeNodes.length + " nodes." );
+    }
+    function onDrop(event, treeId, treeNodes, targetNode, moveType, isCopy) {
+        className = (className === "dark" ? "":"dark");
+        showLog("[ "+getTime()+" onDrop ]&nbsp;&nbsp;&nbsp;&nbsp; moveType:" + moveType);
+        showLog("target: " + (targetNode ? targetNode.name : "root") + "  -- is "+ (isCopy==null? "cancel" : isCopy ? "copy" : "move"))
+    }
+    function onExpand(event, treeId, treeNode) {
+        if (treeNode === autoExpandNode) {
+            className = (className === "dark" ? "":"dark");
+            showLog("[ "+getTime()+" onExpand ]&nbsp;&nbsp;&nbsp;&nbsp;" + treeNode.name);
+        }
+    }
+
+    function showLog(str) {
+        if (!log) log = $("#log");
+        log.append("<li class='"+className+"'>"+str+"</li>");
+        if(log.children("li").length > 8) {
+            log.get(0).removeChild(log.children("li")[0]);
+        }
+    }
+    function getTime() {
+        var now= new Date(),
+        h=now.getHours(),
+        m=now.getMinutes(),
+        s=now.getSeconds(),
+        ms=now.getMilliseconds();
+        return (h+":"+m+":"+s+ " " +ms);
+    }
+
+    function setTrigger() {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        zTree.setting.edit.drag.autoExpandTrigger = $("#callbackTrigger").attr("checked");
+    }
+    
+    $(document).ready(function(){
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        $("#callbackTrigger").bind("change", {}, setTrigger);
+    });
+    </script>
+</body>
+</html>
