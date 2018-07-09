@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>脚手架工具及JSX语法</title>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+                <h1>用create-react-app构建一个react开发环境</h1>
+                <ol>
+                    <li>npm install create-react-app -g 全局安装create-react-app构建工具</li>
+                    <li>create-react-app my-app</li>
+                    <li>cd my-app</li>
+                    <li>npm start</li>
+                </ol>
+            </div>,
+            document.getElementById("example")
+        );
+    </script>
+</body>
+</html>

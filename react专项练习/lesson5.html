@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复合组件</title>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var TeacherHeader = React.createClass({
+            render: function () {
+                return (<img src={this.props.image} />);
+            }
+        });
+        var TeacherIntro = React.createClass({
+            render: function () {
+                return (<div> {this.props.intro} </div>);
+            }
+        });
+        var TeacherInfo = React.createClass({
+            render: function () {
+                return (
+                    <div>
+                        <TeacherHeader image = {this.props.image} />
+                        <TeacherIntro intro = {this.props.intro} />
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <TeacherInfo image="http://image.zhihuishu.com/testzhs/app/content/201602/5c234faba19c4b128bb06241aadcd1e4_s3.png" intro="北京大学资深教授，教育部艺术教育委员会主任" />,
+            document.getElementById("example")
+        )
+    </script>
+</body>
+</html>
