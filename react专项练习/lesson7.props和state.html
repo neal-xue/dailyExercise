@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>props</title>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        //getInitialState获取初始state
+        //getDefaultProps获取默认props
+        var Website = React.createClass({
+            getInitialState: function () {
+                return {
+                    name: "我的github",
+                    site: "github.com"
+                }
+            },
+            render: function() {
+                return (
+                    <div>
+                        <Name name={this.state.name}/>
+                        <Link site={this.state.site}/>
+                    </div>
+                )
+            }
+        })
+        var Name = React.createClass({
+            render: function () {
+                return <h1>{this.props.name}</h1>
+            }
+        })
+        var Link = React.createClass({
+            render: function () {
+                return <a href= {this.props.site}>{this.props.site}</a>
+            }
+        })
+        ReactDOM.render(
+            <Website/>,
+            document.getElementById("example")
+        )
+    </script>
+</body>
+</html>
