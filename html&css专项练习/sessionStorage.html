@@ -7,7 +7,8 @@
     <title>sessionStorage</title>
 </head>
 <body>
-    <a href="https://www.bootcdn.cn/" id="btn">点击</a>
+    <!-- <a href="https://www.bootcdn.cn/" id="btn">点击</a> -->
+    <a href="javascript:void(0)" id="btn">点击</a>
     <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
     <script>
         $(function(){
@@ -16,7 +17,14 @@
                 i = sessionStorage.getItem("videoClickNum");
                 i++;
                 sessionStorage.setItem("videoClickNum",i)
+                //可以通过以下两种方法获取sessionStorage
                 alert(sessionStorage.getItem("videoClickNum"))
+                alert(sessionStorage["videoClickNum"])
+                //存储Json对象
+                var info = {name:"jason",age: "19"}
+                sessionStorage.setItem("userInfo",JSON.stringify(info))
+                var sessionInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+                alert(sessionInfo.name)
             })
         })
     </script>
