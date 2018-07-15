@@ -20,9 +20,10 @@
                 //可以通过以下两种方法获取sessionStorage
                 alert(sessionStorage.getItem("videoClickNum"))
                 alert(sessionStorage["videoClickNum"])
-                //存储Json对象
+                //存储Json对象，将json对象通过JSON.stringify()转换为文本格式
                 var info = {name:"jason",age: "19"}
                 sessionStorage.setItem("userInfo",JSON.stringify(info))
+                //取值时通过JSON.parse()将文本转换为json对象
                 var sessionInfo = JSON.parse(sessionStorage.getItem("userInfo"));
                 alert(sessionInfo.name)
             })
