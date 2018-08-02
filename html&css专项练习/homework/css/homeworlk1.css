@@ -1,0 +1,39 @@
+.banner-wrap{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: #9dc3e6;
+}
+.banner-wrap .banner-list{
+    display: table;
+    margin: 0 auto;
+}
+.banner-wrap .banner-list li{
+    display: none;
+    height: 300px;
+}
+.banner-wrap .banner-list li.active{
+    display: table-cell;
+    vertical-align: middle;
+}
+.banner-wrap .banner-nav{
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
+    line-height: 10px;
+    margin-left: -5px;
+}
+.banner-wrap .banner-nav li{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: #000;
+    margin-left: 5px;
+}
+.banner-wrap .banner-nav li.active{
+    background: #fff;
+}
