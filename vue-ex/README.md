@@ -1,4 +1,4 @@
-# vue-cli-app
+# vue-ex
 
 > A Vue.js project
 
