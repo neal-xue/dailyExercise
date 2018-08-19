@@ -1,0 +1,187 @@
+.m-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    transform: translate(-50%,-50%);
+}
+
+.m-popup .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 8.32rem /* 624/75 */;
+    height: 12.88rem /* 966/75 */;
+    padding: .666667rem /* 50/75 */ .666667rem /* 50/75 */ 0;
+    box-sizing: border-box;
+    background: -webkit-linear-gradient(#e8e8e8,#b0b0b0);
+}
+
+.m-popup .content .title{
+    font-size: 15px;
+    color: #47444c;
+}
+[data-dpr="2"] .m-popup .content .title{
+    font-size: 30px;
+}
+[data-dpr="3"] .m-popup .content .title{
+    font-size: 45px;
+}
+.m-popup .content .title span{
+    font-size: 30px;
+}
+[data-dpr="2"] .m-popup .content .title span{
+    font-size: 60px;
+}
+[data-dpr="3"] .m-popup .content .title span{
+    font-size: 90px;
+}
+.m-popup .content .title .red-color{
+    color: #cc3341;
+}
+
+.m-popup .content .self-info{
+    display: flex;
+    margin-top: .293333rem /* 22/75 */;
+}
+.m-popup .content .self-info .header{
+    width: .8rem /* 60/75 */;
+}
+.m-popup .content .self-info .header img{
+    display: block;
+    width: .8rem /* 60/75 */;
+    height: .8rem /* 60/75 */;
+}
+.m-popup .content .self-info .header .name{
+    width: .8rem /* 60/75 */;
+    font-size: 10px;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #797979;
+    text-align: center;
+}
+[data-dpr="2"] .m-popup .content .self-info .header .name{
+    font-size: 20px;
+}
+[data-dpr="3"] .m-popup .content .self-info .header .name{
+    font-size: 30px;
+}
+.m-popup .content .self-info .text{
+    flex: 1;
+    margin-left: .2rem /* 15/75 */;
+    line-height: 1.066667rem /* 80/75 */;
+    font-size: 18px;
+    text-decoration: underline;
+}
+[data-dpr="2"] .m-popup .content .self-info .text{
+    font-size: 36px;
+}
+[data-dpr="3"] .m-popup .content .self-info .text{
+    font-size: 54px;
+}
+
+.m-popup .content .phone{
+    width: 5.466667rem /* 410/75 */;
+    height: 5.96rem /* 447/75 */;
+    margin: .2rem /* 30/75 */ auto;
+    text-align: center;
+}
+.m-popup .content .phone img{
+    display: inline-block;
+    width: 4.066667rem /* 305/75 */;
+    height: 5.96rem /* 447/75 */;
+    object-fit: contain;
+    box-shadow: 0 .2rem .3rem -.2rem rgba(0,0,0,.7);
+}
+
+.m-popup .content p{
+    color: #47444c;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.2;
+}
+[data-dpr="2"] .m-popup .content p{
+    font-size: 24px;
+}
+[data-dpr="3"] .m-popup .content p{
+    font-size: 36px;
+}
+
+.u-save-btn{
+    display: block;
+    width: 5.426667rem /* 407/75 */;
+    height: 1.16rem /* 87/75 */;
+    margin: .266667rem /* 20/75 */ auto 0;
+    background-color: #b83a45;
+    font-size: 16px;
+    line-height: 1.16rem /* 87/75 */;
+    color: #fff;
+    text-align: center;
+}
+[data-dpr="2"] .u-save-btn{
+    font-size: 32px;
+}
+[data-dpr="3"] .u-save-btn{
+    font-size: 48px;
+}
+
+.u-close{
+    position: absolute;
+    right: 0;
+    top: -.88rem /* 66/75 */;
+    height: .64rem /* 48/75 */;
+    width: .64rem /* 48/75 */;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: rotate(45deg);
+}
+.u-close:before,.u-close:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    width: 1px;
+    height: .32rem /* 24/75 */;
+    background: #fff;
+    border-radius: 50%;
+}
+.u-close:before{
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform:  translate(-50%,-50%) rotate(90deg);
+}
+.u-close em{
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: .18rem;
+    height: 1px;
+    background: #fff;
+    -webkit-transform-origin: -200% 50%;
+    -webkit-transform: translate(0,-50%) rotate(45deg);
+}
+
+.m-popup .content .close-line{
+    position: absolute;
+    top: -.16rem;
+    right: .32rem;
+    width: 1px;
+    height: .16rem;
+    background: #fff;
+}
+
+.m-popup .content .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 8.32rem /* 624/75 */;
+    height: 12.88rem /* 966/75 */;
+}
